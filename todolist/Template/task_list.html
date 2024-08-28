@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main{
+            width: 50%;
+            height: 50%;
+            margin: auto;
+            border-radius: 5px;
+            padding: 1rem;
+            box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        h1{
+            text-align: center;
+            text-decoration: underline;
+        }
+        th, td{
+            padding: 1rem;
+        }
+        .second-tr{
+            border-radius: 5px;
+        }
+        .update{
+            background-color: blue;
+            padding: 1rem;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .delete{
+            background-color: red;
+            padding: 1rem;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .create_new{
+            background-color: green;
+            color: white;
+            padding: 0.5rem;
+            margin-top: 5rem;
+        }
+        .login_task{
+            background-color: green;
+            color: white;
+            padding: 0.5rem;
+            margin-top: 5rem;
+        }
+        .signup_task{
+            background-color: green;
+            color: white;
+            padding: 0.5rem;
+            margin-top: 5rem;
+        }
+        .logout_task{
+            background-color: green;
+            color: white;
+            padding: 0.5rem;
+            margin-top: 5rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+    <h1>Task List</h1>
+    <table> 
+        <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Due date</th>
+            <th>Actions</th>
+        </tr>
+        {%for task in Tasks%}
+        <tr class="second-tr">
+            <td>{{task.title}}</td>
+            <td>{{task.complete}}</td>
+            <td>{{task.due_date}}</td>
+            <td><a href="{% url 'Update_task' task.id %}" class="update">Update</a></td>
+            <td><a href="{% url 'Delete_task' task.pk %}" class="delete">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'create_task' %}" class="create_new">Create new</a>
+    <a href="{% url 'Login_task' %}" class="login_task">login</a>
+    <a href="{% url 'Signup_task' %}" class="signup_task">Signup</a>
+    <a href="{% url 'Logout_task' %}" class="logout_task">Logout</a>
+    </main>
+</body>
+</html>
+<!-- After clicking the link, it will go to the urls file, and check for the matching views, and run the views function to return the result as template(html). -->

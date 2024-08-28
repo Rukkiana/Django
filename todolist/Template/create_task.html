@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'create_task' %}" method="post">
+        {% csrf_token %}
+        <label for="title">Title: <input type="text" name="title"></label>
+        <label for="status"><input type="checkbox" name="status" id=""></label>
+        <!-- y d id -->
+        <label for="due_date">Due date: <input type="datetime-local" name="datetime"></label>
+        <input type="submit" name="submit">
+    </form>
+</body>
+</html>

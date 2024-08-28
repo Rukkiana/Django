@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+</head>
+<body>
+    <form action="{% url 'Update_task' task.id %}" method="post">
+        {% csrf_token %}
+        <label for="title"><input type="text" value="{{task.title}}" name="tittle"></label>
+        <label for="complete"><input type="checkbox" name="completee" {% if task.complete %}checked {% endif %}></label>
+        <label for="due date"><input type="datetime-local" value="{{task.due_date}}" name="date"></label>
+        <input type="submit" value="Submit">
+<!-- The value should the existing one for each field, which will be referenced to by their attribute name in the models file. -->
+    </form>
+</body>
+</html>
